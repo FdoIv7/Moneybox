@@ -9,13 +9,18 @@
 /* Begin PBXBuildFile section */
 		F9B4346E281E073A003EAAA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B4346D281E073A003EAAA6 /* AppDelegate.swift */; };
 		F9B43470281E073A003EAAA6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B4346F281E073A003EAAA6 /* SceneDelegate.swift */; };
-		F9B43472281E073A003EAAA6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B43471281E073A003EAAA6 /* ViewController.swift */; };
+		F9B43472281E073A003EAAA6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B43471281E073A003EAAA6 /* LoginViewController.swift */; };
 		F9B43475281E073A003EAAA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9B43473281E073A003EAAA6 /* Main.storyboard */; };
 		F9B43477281E073D003EAAA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9B43476281E073D003EAAA6 /* Assets.xcassets */; };
 		F9B4347A281E073D003EAAA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9B43478281E073D003EAAA6 /* LaunchScreen.storyboard */; };
 		F9B43485281E073D003EAAA6 /* MoneyboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B43484281E073D003EAAA6 /* MoneyboxTests.swift */; };
 		F9B4348F281E073D003EAAA6 /* MoneyboxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B4348E281E073D003EAAA6 /* MoneyboxUITests.swift */; };
 		F9B43491281E073D003EAAA6 /* MoneyboxUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B43490281E073D003EAAA6 /* MoneyboxUITestsLaunchTests.swift */; };
+		F9B434A4281E4B12003EAAA6 /* TextFieldValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B434A3281E4B12003EAAA6 /* TextFieldValidators.swift */; };
+		F9B434A6281E4CD6003EAAA6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B434A5281E4CD6003EAAA6 /* LoginViewModel.swift */; };
+		F9B434AB281E504E003EAAA6 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B434AA281E504E003EAAA6 /* APIService.swift */; };
+		F9B434AD281F07A4003EAAA6 /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B434AC281F07A3003EAAA6 /* LoginResponseModel.swift */; };
+		F9B434AF281F07E9003EAAA6 /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B434AE281F07E9003EAAA6 /* LoginRequestModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +44,7 @@
 		F9B4346A281E073A003EAAA6 /* Moneybox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moneybox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9B4346D281E073A003EAAA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9B4346F281E073A003EAAA6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F9B43471281E073A003EAAA6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F9B43471281E073A003EAAA6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F9B43474281E073A003EAAA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F9B43476281E073D003EAAA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9B43479281E073D003EAAA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +54,11 @@
 		F9B4348A281E073D003EAAA6 /* MoneyboxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyboxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9B4348E281E073D003EAAA6 /* MoneyboxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyboxUITests.swift; sourceTree = "<group>"; };
 		F9B43490281E073D003EAAA6 /* MoneyboxUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyboxUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F9B434A3281E4B12003EAAA6 /* TextFieldValidators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidators.swift; sourceTree = "<group>"; };
+		F9B434A5281E4CD6003EAAA6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		F9B434AA281E504E003EAAA6 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		F9B434AC281F07A3003EAAA6 /* LoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
+		F9B434AE281F07E9003EAAA6 /* LoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +109,14 @@
 		F9B4346C281E073A003EAAA6 /* Moneybox */ = {
 			isa = PBXGroup;
 			children = (
+				F9B434A2281E129F003EAAA6 /* ViewModel */,
+				F9B4349F281E11D9003EAAA6 /* Model */,
+				F9B4349E281E11BA003EAAA6 /* View */,
+				F9B4349D281E11AF003EAAA6 /* Resources */,
 				F9B4346D281E073A003EAAA6 /* AppDelegate.swift */,
 				F9B4346F281E073A003EAAA6 /* SceneDelegate.swift */,
-				F9B43471281E073A003EAAA6 /* ViewController.swift */,
-				F9B43473281E073A003EAAA6 /* Main.storyboard */,
-				F9B43476281E073D003EAAA6 /* Assets.xcassets */,
-				F9B43478281E073D003EAAA6 /* LaunchScreen.storyboard */,
 				F9B4347B281E073D003EAAA6 /* Info.plist */,
+				F9B434A9281E5025003EAAA6 /* Managers */,
 			);
 			path = Moneybox;
 			sourceTree = "<group>";
@@ -125,6 +136,50 @@
 				F9B43490281E073D003EAAA6 /* MoneyboxUITestsLaunchTests.swift */,
 			);
 			path = MoneyboxUITests;
+			sourceTree = "<group>";
+		};
+		F9B4349D281E11AF003EAAA6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F9B43476281E073D003EAAA6 /* Assets.xcassets */,
+				F9B434A3281E4B12003EAAA6 /* TextFieldValidators.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F9B4349E281E11BA003EAAA6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F9B43471281E073A003EAAA6 /* LoginViewController.swift */,
+				F9B43473281E073A003EAAA6 /* Main.storyboard */,
+				F9B43478281E073D003EAAA6 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F9B4349F281E11D9003EAAA6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F9B434AC281F07A3003EAAA6 /* LoginResponseModel.swift */,
+				F9B434AE281F07E9003EAAA6 /* LoginRequestModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F9B434A2281E129F003EAAA6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F9B434A5281E4CD6003EAAA6 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F9B434A9281E5025003EAAA6 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F9B434AA281E504E003EAAA6 /* APIService.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,8 +313,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9B43472281E073A003EAAA6 /* ViewController.swift in Sources */,
+				F9B43472281E073A003EAAA6 /* LoginViewController.swift in Sources */,
+				F9B434AD281F07A4003EAAA6 /* LoginResponseModel.swift in Sources */,
 				F9B4346E281E073A003EAAA6 /* AppDelegate.swift in Sources */,
+				F9B434A4281E4B12003EAAA6 /* TextFieldValidators.swift in Sources */,
+				F9B434A6281E4CD6003EAAA6 /* LoginViewModel.swift in Sources */,
+				F9B434AF281F07E9003EAAA6 /* LoginRequestModel.swift in Sources */,
+				F9B434AB281E504E003EAAA6 /* APIService.swift in Sources */,
 				F9B43470281E073A003EAAA6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
