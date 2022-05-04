@@ -2,16 +2,12 @@
 //  LoginViewModel.swift
 //  Moneybox
 //
-//  Created by Fernando  Perez on 01/05/22.
+//  Created by Fernando Perez on 01/05/22.
 //
 
 import Foundation
 
-protocol LoginViewModelProtocol {
-    
-}
-
-class LoginViewModel {
+final class LoginViewModel {
     let textfieldValidator = TextFieldValidator()
 
     func validateCredentialsFormat(_ email: String, _ password: String) -> Bool {
@@ -21,8 +17,7 @@ class LoginViewModel {
         return false
     }
 
-    func login(_ email: String, _ password: String) {
-        
+    public func login(_ email: String, _ password: String) {
+        APIService.shared.login(email, password)
     }
-    
 }
