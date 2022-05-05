@@ -18,7 +18,7 @@
 		ED0097C328236EB5008B2D53 /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0097C228236EB5008B2D53 /* AccountDetailsViewController.swift */; };
 		ED0097C5282370C7008B2D53 /* BalanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0097C4282370C7008B2D53 /* BalanceViewModel.swift */; };
 		ED0097C8282376F4008B2D53 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0097C7282376F4008B2D53 /* Utilities.swift */; };
-		EDE7632228203BCF00D88DE0 /* Dictionary+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE7632128203BCF00D88DE0 /* Dictionary+Ext.swift */; };
+		ED0097CA2824575F008B2D53 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0097C92824575F008B2D53 /* Constants.swift */; };
 		EDE763272820818C00D88DE0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = EDE763262820818C00D88DE0 /* Alamofire */; };
 		EDE763292820C6EC00D88DE0 /* AccountsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE763282820C6EC00D88DE0 /* AccountsResponse.swift */; };
 		EDE7632B2820D28300D88DE0 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE7632A2820D28300D88DE0 /* Account.swift */; };
@@ -64,7 +64,7 @@
 		ED0097C228236EB5008B2D53 /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		ED0097C4282370C7008B2D53 /* BalanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewModel.swift; sourceTree = "<group>"; };
 		ED0097C7282376F4008B2D53 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		EDE7632128203BCF00D88DE0 /* Dictionary+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Ext.swift"; sourceTree = "<group>"; };
+		ED0097C92824575F008B2D53 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EDE763282820C6EC00D88DE0 /* AccountsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsResponse.swift; sourceTree = "<group>"; };
 		EDE7632A2820D28300D88DE0 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		F9B4346A281E073A003EAAA6 /* Moneybox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moneybox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,7 +124,9 @@
 		ED0097C6282376DE008B2D53 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				F9B434A3281E4B12003EAAA6 /* TextFieldValidators.swift */,
 				ED0097C7282376F4008B2D53 /* Utilities.swift */,
+				ED0097C92824575F008B2D53 /* Constants.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -141,7 +143,6 @@
 		EDE7632028203BBF00D88DE0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				EDE7632128203BCF00D88DE0 /* Dictionary+Ext.swift */,
 				ED0097BB28221DB7008B2D53 /* UIColor+Ext.swift */,
 			);
 			path = Extensions;
@@ -204,7 +205,6 @@
 				ED0097C6282376DE008B2D53 /* Misc */,
 				EDE7632028203BBF00D88DE0 /* Extensions */,
 				F9B43476281E073D003EAAA6 /* Assets.xcassets */,
-				F9B434A3281E4B12003EAAA6 /* TextFieldValidators.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -395,7 +395,6 @@
 				F9B43472281E073A003EAAA6 /* LoginViewController.swift in Sources */,
 				ED0097B828220289008B2D53 /* Product.swift in Sources */,
 				EDE7632B2820D28300D88DE0 /* Account.swift in Sources */,
-				EDE7632228203BCF00D88DE0 /* Dictionary+Ext.swift in Sources */,
 				ED0097C12822D3B2008B2D53 /* AccountTableViewCell.swift in Sources */,
 				ED0097C5282370C7008B2D53 /* BalanceViewModel.swift in Sources */,
 				ED0097C8282376F4008B2D53 /* Utilities.swift in Sources */,
@@ -405,6 +404,7 @@
 				F9B4346E281E073A003EAAA6 /* AppDelegate.swift in Sources */,
 				F9B434A4281E4B12003EAAA6 /* TextFieldValidators.swift in Sources */,
 				F9B434A6281E4CD6003EAAA6 /* LoginViewModel.swift in Sources */,
+				ED0097CA2824575F008B2D53 /* Constants.swift in Sources */,
 				F9B434AB281E504E003EAAA6 /* APIService.swift in Sources */,
 				F9B43470281E073A003EAAA6 /* SceneDelegate.swift in Sources */,
 				ED0097B52821DFAF008B2D53 /* AccountInfoViewModel.swift in Sources */,

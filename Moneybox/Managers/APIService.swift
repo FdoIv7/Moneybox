@@ -20,7 +20,7 @@ final class APIService {
         "apiVersion": "3.0.0"
     ]
 
-    public func login(_ email: String, _ password: String) {
+    public func login(_ email: String, _ password: String, completion: @escaping (_ accountHolderName: String?) -> ()) {
         let usersLoginPath = "users/login"
         let fullPath = baseURL + usersLoginPath
 
@@ -29,16 +29,24 @@ final class APIService {
             "Password": password,
         ]
         AF.request(fullPath, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { [weak self] result in
+            print("Login result = \(result)")
             guard let data = result.data, let httpResponse = result.response else { return }
             self?.accountRequestSuccessful = (200..<300).contains(httpResponse.statusCode)
             do {
                 let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary
+                // Session Response
                 guard let session = jsonResponse?.value(forKey: "Session") as? NSDictionary else { return }
                 guard let bearerToken = session.value(forKey: "BearerToken") as? String else { return }
+
+                // User response
+                guard let user = jsonResponse?.value(forKey: "User") as? NSDictionary,
+                     let name = user.value(forKey: "FirstName") as? String else { return }
                 self?.token = bearerToken
                 self?.headers["Authorization"] = "Bearer \(self?.token ?? "")"
+                completion(name)
             } catch {
                 print("Error parsing response = \(error)")
+                completion("MoneyboxTeam")
             }
         }
     }
@@ -53,6 +61,7 @@ final class APIService {
             do {
                 let jsonAccounts = try JSONSerialization.data(withJSONObject: accounts, options: .prettyPrinted)
                 let accountsResult = try JSONDecoder().decode([Account].self, from: jsonAccounts)
+                completion(accountsResult)
             } catch {
                 print(error)
             }
@@ -65,7 +74,6 @@ final class APIService {
         AF.request(fullPath, method: .get, parameters: nil, encoding: JSONEncoding.default,
                   headers: headers).responseJSON { [weak self] results in
             print("Result products = \(results)")
-            print("Result status = \(results.response?.statusCode)")
             guard let httpResponse = results.response, let self = self else { return }
             self.accountRequestSuccessful = (200..<300).contains(httpResponse.statusCode)
             guard let results = results.value as? NSDictionary,
@@ -81,7 +89,21 @@ final class APIService {
         }
     }
 
-    public func addBalance() {
-        
+    public func makePayment(amount: Double, productId: Int, completion: @escaping (_ newMoneyboxAmount: Int, _ success: Bool) -> ()) {
+        let addAmountPath = "/oneoffpayments"
+        let fullPath = baseURL + addAmountPath
+        let params: [String: Any] = [
+            "Amount": amount,
+            "InvestorProductId": productId
+        ]
+        AF.request(fullPath, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON
+        { (response) in
+            print("Response = \(response)")
+            if let result = response.value as? NSDictionary, let moneyboxValue = result.value(forKey: "Moneybox") as? Int {
+                completion(moneyboxValue, true)
+            } else {
+                completion(-1, false)
+            }
+        }
     }
 }

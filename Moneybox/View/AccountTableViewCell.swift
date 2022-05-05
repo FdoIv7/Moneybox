@@ -9,7 +9,7 @@ import UIKit
 
 class AccountTableViewCell: UITableViewCell {
 
-    static let identifier = "AccountTableViewCell"
+    static let identifier = Constants.Identifiers.accountTableViewCell
 
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
@@ -28,8 +28,7 @@ class AccountTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = UIFont(name: "Avenir Heavy", size: 20)
-        label.textColor = .white
+        label.font = UIFont(name: Constants.GeneralStrings.fontAvenir, size: 20)
         return label
     }()
 
@@ -37,8 +36,7 @@ class AccountTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = UIFont(name: "Avenir Heavy", size: 15)
-        label.textColor = .white
+        label.font = UIFont(name: Constants.GeneralStrings.fontAvenir, size: 15)
         return label
     }()
 
@@ -46,8 +44,7 @@ class AccountTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = UIFont(name: "Avenir Heavy", size: 15)
-        label.textColor = .white
+        label.font = UIFont(name: Constants.GeneralStrings.fontAvenir, size: 15)
         return label
     }()
 
@@ -56,15 +53,18 @@ class AccountTableViewCell: UITableViewCell {
             mainStackView.backgroundColor = .mainColor
             planValueLabel.textColor = .paletteDarkBlue
             moneyboxLabel.textColor = .paletteDarkBlue
+            accountNameLabel.textColor = .white
             tintColor = .paletteDarkBlue
         } else {
             mainStackView.backgroundColor = .paletteDarkBlue
             accountNameLabel.textColor = .mainColor
+            planValueLabel.textColor = .white
+            moneyboxLabel.textColor = .white
             tintColor = .white
         }
         accountNameLabel.text = model.product.name
-        planValueLabel.text = "Plan Value: £\(String(format: "%.2f", model.planValue))"
-        moneyboxLabel.text = "Moneybox: \(String("£\(model.moneyBox)"))"
+        planValueLabel.text = Constants.AccountStrings.planValue + "\(String(format: "%.2f", model.planValue))"
+        moneyboxLabel.text = Constants.AccountStrings.moneybox + "\(String(model.moneyBox))"
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -87,12 +87,13 @@ class AccountTableViewCell: UITableViewCell {
 
     private func cellAppearanceSetup() {
         backgroundColor = .clear
-        if let image = UIImage(systemName: "chevron.right") {
+        if let image = UIImage(systemName: Constants.Images.chevronRight) {
             let checkMark = UIImageView(frame:CGRect(x:0, y:0, width:(image.size.width), height:(image.size.height)))
             checkMark.image = image
             accessoryView = checkMark
         }
     }
+
     private func setConstraints() {
         NSLayoutConstraint.activate([
             mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor),

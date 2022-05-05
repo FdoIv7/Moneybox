@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import ProgressHUD
 
 final class AccountsViewController: UIViewController {
 
     private var accountHolderInfo: AccountHolderInformation
-    private let utilHelper = Utilities()
+    private let accountViewModel = AccountInfoViewModel()
 
     private lazy var welcomeStackView: UIStackView = {
         let stackView = UIStackView()
@@ -23,8 +24,8 @@ final class AccountsViewController: UIViewController {
 
     private lazy var helloLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Avenir Heavy", size: 15)
-        label.text = "Hello Moneybox Team!"
+        label.font = UIFont(name: Constants.GeneralStrings.fontAvenir, size: 20)
+        label.text = Constants.GeneralStrings.hello + "\(accountHolderInfo.name)"
         label.textColor = .paletteDarkBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -33,8 +34,8 @@ final class AccountsViewController: UIViewController {
 
     private lazy var planValueLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Avenir Heavy", size: 20)
-        label.text = "Total Plan Value: £\(String(format: "%.2f", accountHolderInfo.totalPlanValue))"
+        label.font = UIFont(name: Constants.GeneralStrings.fontAvenir, size: 18)
+        label.text = Constants.AccountStrings.planValue + "\(String(format: "%.2f", accountHolderInfo.totalPlanValue))"
         label.textColor = .paletteDarkBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -65,7 +66,14 @@ final class AccountsViewController: UIViewController {
         setupNavBar()
         accountsTableView.delegate = self
         accountsTableView.dataSource = self
-        print("Products from accounts = \(accountHolderInfo.accountProducts)")
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        accountViewModel.getProducts { [weak self] products, total, success in
+            self?.accountHolderInfo.accountProducts = products
+            self?.accountsTableView.reloadData()
+            ProgressHUD.dismiss()
+        }
     }
 
     private func setupView() {
@@ -80,12 +88,15 @@ final class AccountsViewController: UIViewController {
     }
 
     private func setupNavBar() {
-        title = "Accounts"
+        title = Constants.AccountStrings.accounts
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.mainColor]
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = .mainColor
+        let backButton = UIBarButtonItem()
+        backButton.title = Constants.GeneralStrings.logout
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
 
     private func setConstraints() {

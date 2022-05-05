@@ -9,7 +9,9 @@ import Foundation
 
 final class BalanceViewModel {
 
-    public func addBalance() {
-        APIService.shared.addBalance()
+    public func makePayment(_ amount: Double, _ productId: Int, completion: @escaping (_ newMoneyboxAmount: Int, _ success: Bool) -> ()) {
+        APIService.shared.makePayment(amount: amount, productId: productId) { newMoneyboxAmount, success in
+            completion(newMoneyboxAmount, success)
+        }
     }
 }

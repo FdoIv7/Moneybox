@@ -17,7 +17,9 @@ final class LoginViewModel {
         return false
     }
 
-    public func login(_ email: String, _ password: String) {
-        APIService.shared.login(email, password)
+    public func login(_ email: String, _ password: String, completion: @escaping (_ accountHolderName: String?) -> ()) {
+        APIService.shared.login(email, password) { accountHolderName in
+            completion(accountHolderName)
+        }
     }
 }

@@ -17,28 +17,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Gpy-d3-quo">
-                                <rect key="frame" x="16" y="284.5" width="383" height="88"/>
+                                <rect key="frame" x="16" y="265.5" width="383" height="88"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ty6-eF-lVo">
                                         <rect key="frame" x="0.0" y="0.0" width="383" height="34"/>
+                                        <color key="textColor" red="0.0" green="0.38039215686274508" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sO8-ar-Bwk">
                                         <rect key="frame" x="0.0" y="54" width="383" height="34"/>
+                                        <color key="textColor" red="0.0" green="0.3803921569" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="password"/>
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNA-Xj-SHy">
-                                <rect key="frame" x="16" y="178" width="117" height="61.5"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="45"/>
-                                <color key="textColor" red="0.0" green="0.76078431372549016" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZm-qp-v2d">
-                                <rect key="frame" x="132" y="417.5" width="150" height="45"/>
+                                <rect key="frame" x="132" y="398.5" width="150" height="45"/>
                                 <color key="backgroundColor" red="0.0" green="0.76078431369999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="fM4-t1-NYk"/>
@@ -55,18 +51,23 @@
                                     <action selector="logginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tKP-Bt-G3l"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moneybox" translatesAutoresizingMaskIntoConstraints="NO" id="yMA-ob-2I3">
+                                <rect key="frame" x="101.5" y="133" width="211" height="112.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yMA-ob-2I3" secondAttribute="height" multiplier="15:8" id="wLq-2Q-DB5"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="QZm-qp-v2d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0j6-Hk-kBf"/>
+                            <constraint firstItem="Gpy-d3-quo" firstAttribute="top" secondItem="yMA-ob-2I3" secondAttribute="bottom" constant="20" id="4zc-vu-XBg"/>
                             <constraint firstItem="Gpy-d3-quo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="5tD-45-K5o"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wNA-Xj-SHy" secondAttribute="trailing" symbolic="YES" id="9vO-Hw-noi"/>
-                            <constraint firstItem="wNA-Xj-SHy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="90" id="GKD-dT-XPk"/>
+                            <constraint firstItem="yMA-ob-2I3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7hk-ce-KC4"/>
                             <constraint firstItem="QZm-qp-v2d" firstAttribute="top" secondItem="Gpy-d3-quo" secondAttribute="bottom" constant="45" id="cCM-1k-rK2"/>
-                            <constraint firstItem="wNA-Xj-SHy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="cxA-SJ-TYG"/>
+                            <constraint firstItem="yMA-ob-2I3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="45" id="l5L-ml-SRj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gpy-d3-quo" secondAttribute="trailing" constant="15" id="t0g-eJ-9jd"/>
-                            <constraint firstItem="Gpy-d3-quo" firstAttribute="top" secondItem="wNA-Xj-SHy" secondAttribute="bottom" constant="45" id="vB0-do-H04"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QVh-3N-pVv"/>
@@ -100,6 +101,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="moneybox" width="150" height="112.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

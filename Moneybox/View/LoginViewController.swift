@@ -18,20 +18,15 @@ class LoginViewController: UIViewController {
     private let accountInfoViewModel = AccountInfoViewModel()
     private var accountHolderInformation = AccountHolderInformation()
     
-    private lazy var warningText: UILabel = {
-        let label = UILabel()
-        label.text = "Please enter your account information"
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
     }
     
     private func setView() {
+        let gradientLayer = Utilities.makeGradient(topColor: .white, bottomColor: .lightMain)
+        gradientLayer.frame = self.view.bounds
+        view.layer.insertSublayer(gradientLayer, at: 0)
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         setTextFields()
@@ -50,44 +45,65 @@ class LoginViewController: UIViewController {
     }
     
     private func getAccountInformation() {
+        showProgressHud()
         guard let email = emailTextField.text, let password = passwordTextField.text,
               loginViewModel.validateCredentialsFormat(email, password) else {
             showLoginWarning()
+            dismissProgressHud()
             return
         }
-        print("Email = \(email)")
-        print("Password = \(password)")
-        loginViewModel.login(email, password)
-        if !APIService.shared.accountRequestSuccessful {
-            showLoginError()
-            return
-        }
-
-        accountInfoViewModel.getProducts { [weak self] products, total, success in
+        loginViewModel.login(email, password) { [weak self] accountHolderName in
             guard let self = self else { return }
-            if success {
-                self.accountHolderInformation.accountProducts = products
-                self.accountHolderInformation.totalPlanValue = total
-                let accountsController = AccountsViewController(accountHolderInfo: self.accountHolderInformation)
-                self.navigationController?.pushViewController(accountsController, animated: true)
-            } else {
+            self.accountHolderInformation.name = accountHolderName ?? Constants.GeneralStrings.moneyboxTeam
+            self.dismissProgressHud()
+            if !APIService.shared.accountRequestSuccessful {
                 self.showLoginError()
+                return
             }
+            self.accountInfoViewModel.getProducts { products, total, success in
+                if success {
+                    self.accountHolderInformation.accountProducts = products
+                    self.accountHolderInformation.totalPlanValue = total
+                    let accountsController = AccountsViewController(accountHolderInfo: self.accountHolderInformation)
+                    self.navigationController?.pushViewController(accountsController, animated: true)
+                } else {
+                    self.showLoginError()
+                }
+            }
+            self.dismissProgressHud()
+        }
+    }
+
+    private func showProgressHud() {
+        ProgressHUD.animationType = .circleRotateChase
+        ProgressHUD.colorAnimation = .mainColor
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            ProgressHUD.show()
+        }
+    }
+
+    private func dismissProgressHud() {
+        DispatchQueue.main.async {
+            ProgressHUD.dismiss()
         }
     }
 
     private func showLoginError() {
-        let alert = UIAlertController(title: "Login Error", message: "Please try again",
+        let alert = UIAlertController(title: Constants.AlertMessages.loginError, message: Constants.AlertMessages.tryAgain,
                                       preferredStyle: .alert)
-        let dismissAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let dismissAction = UIAlertAction(title: Constants.AlertMessages.ok, style: .default) { [weak self] action in
+            self?.dismissProgressHud()
+        }
         alert.addAction(dismissAction)
         present(alert, animated: true, completion: nil)
     }
 
     private func showLoginWarning() {
-        let alert = UIAlertController(title: "Enter your credentials", message: "Please enter all the information",
+        let alert = UIAlertController(title: Constants.AlertMessages.credentials, message: Constants.AlertMessages.correctInfo,
                                       preferredStyle: .alert)
-        let dismissAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let dismissAction = UIAlertAction(title: Constants.AlertMessages.ok, style: .default) { [weak self] action in
+            self?.dismissProgressHud()
+        }
         alert.addAction(dismissAction)
         present(alert, animated: true, completion: nil)
     }
