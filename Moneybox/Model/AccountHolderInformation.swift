@@ -10,5 +10,5 @@ import Foundation
 struct AccountHolderInformation {
     var name: String = "Fer"
     var totalPlanValue: Double = 0
-    var accounts: [Account] = []
+    var accountProducts: [ProductResponses] = []
 }

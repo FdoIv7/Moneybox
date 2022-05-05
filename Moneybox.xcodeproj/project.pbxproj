@@ -13,8 +13,12 @@
 		ED0097B828220289008B2D53 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0097B728220289008B2D53 /* Product.swift */; };
 		ED0097BA2822186C008B2D53 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0097B92822186C008B2D53 /* AccountsViewController.swift */; };
 		ED0097BC28221DB7008B2D53 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0097BB28221DB7008B2D53 /* UIColor+Ext.swift */; };
+		ED0097BF2822C6C9008B2D53 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = ED0097BE2822C6C9008B2D53 /* ProgressHUD */; };
+		ED0097C12822D3B2008B2D53 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0097C02822D3B2008B2D53 /* AccountTableViewCell.swift */; };
+		ED0097C328236EB5008B2D53 /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0097C228236EB5008B2D53 /* AccountDetailsViewController.swift */; };
+		ED0097C5282370C7008B2D53 /* BalanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0097C4282370C7008B2D53 /* BalanceViewModel.swift */; };
+		ED0097C8282376F4008B2D53 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0097C7282376F4008B2D53 /* Utilities.swift */; };
 		EDE7632228203BCF00D88DE0 /* Dictionary+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE7632128203BCF00D88DE0 /* Dictionary+Ext.swift */; };
-		EDE7632428203CB500D88DE0 /* CharacterSet+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE7632328203CB500D88DE0 /* CharacterSet+Ext.swift */; };
 		EDE763272820818C00D88DE0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = EDE763262820818C00D88DE0 /* Alamofire */; };
 		EDE763292820C6EC00D88DE0 /* AccountsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE763282820C6EC00D88DE0 /* AccountsResponse.swift */; };
 		EDE7632B2820D28300D88DE0 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE7632A2820D28300D88DE0 /* Account.swift */; };
@@ -56,8 +60,11 @@
 		ED0097B728220289008B2D53 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		ED0097B92822186C008B2D53 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		ED0097BB28221DB7008B2D53 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		ED0097C02822D3B2008B2D53 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		ED0097C228236EB5008B2D53 /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
+		ED0097C4282370C7008B2D53 /* BalanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewModel.swift; sourceTree = "<group>"; };
+		ED0097C7282376F4008B2D53 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		EDE7632128203BCF00D88DE0 /* Dictionary+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Ext.swift"; sourceTree = "<group>"; };
-		EDE7632328203CB500D88DE0 /* CharacterSet+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterSet+Ext.swift"; sourceTree = "<group>"; };
 		EDE763282820C6EC00D88DE0 /* AccountsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsResponse.swift; sourceTree = "<group>"; };
 		EDE7632A2820D28300D88DE0 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		F9B4346A281E073A003EAAA6 /* Moneybox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moneybox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDE763272820818C00D88DE0 /* Alamofire in Frameworks */,
+				ED0097BF2822C6C9008B2D53 /* ProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +121,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		ED0097C6282376DE008B2D53 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				ED0097C7282376F4008B2D53 /* Utilities.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
 		EDE7631F28201ABF00D88DE0 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				EDE7632128203BCF00D88DE0 /* Dictionary+Ext.swift */,
-				EDE7632328203CB500D88DE0 /* CharacterSet+Ext.swift */,
 				ED0097BB28221DB7008B2D53 /* UIColor+Ext.swift */,
 			);
 			path = Extensions;
@@ -186,6 +201,7 @@
 		F9B4349D281E11AF003EAAA6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ED0097C6282376DE008B2D53 /* Misc */,
 				EDE7632028203BBF00D88DE0 /* Extensions */,
 				F9B43476281E073D003EAAA6 /* Assets.xcassets */,
 				F9B434A3281E4B12003EAAA6 /* TextFieldValidators.swift */,
@@ -199,6 +215,8 @@
 				EDE7631F28201ABF00D88DE0 /* Storyboards */,
 				F9B43471281E073A003EAAA6 /* LoginViewController.swift */,
 				ED0097B92822186C008B2D53 /* AccountsViewController.swift */,
+				ED0097C02822D3B2008B2D53 /* AccountTableViewCell.swift */,
+				ED0097C228236EB5008B2D53 /* AccountDetailsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -220,6 +238,7 @@
 			children = (
 				F9B434A5281E4CD6003EAAA6 /* LoginViewModel.swift */,
 				ED0097B42821DFAF008B2D53 /* AccountInfoViewModel.swift */,
+				ED0097C4282370C7008B2D53 /* BalanceViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -250,6 +269,7 @@
 			name = Moneybox;
 			packageProductDependencies = (
 				EDE763262820818C00D88DE0 /* Alamofire */,
+				ED0097BE2822C6C9008B2D53 /* ProgressHUD */,
 			);
 			productName = Moneybox;
 			productReference = F9B4346A281E073A003EAAA6 /* Moneybox.app */;
@@ -325,6 +345,7 @@
 			mainGroup = F9B43461281E073A003EAAA6;
 			packageReferences = (
 				EDE763252820818C00D88DE0 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				ED0097BD2822C6C9008B2D53 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 			);
 			productRefGroup = F9B4346B281E073A003EAAA6 /* Products */;
 			projectDirPath = "";
@@ -370,13 +391,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED0097B32821DED0008B2D53 /* AccountHolderInformation.swift in Sources */,
+				ED0097C328236EB5008B2D53 /* AccountDetailsViewController.swift in Sources */,
 				F9B43472281E073A003EAAA6 /* LoginViewController.swift in Sources */,
 				ED0097B828220289008B2D53 /* Product.swift in Sources */,
 				EDE7632B2820D28300D88DE0 /* Account.swift in Sources */,
 				EDE7632228203BCF00D88DE0 /* Dictionary+Ext.swift in Sources */,
+				ED0097C12822D3B2008B2D53 /* AccountTableViewCell.swift in Sources */,
+				ED0097C5282370C7008B2D53 /* BalanceViewModel.swift in Sources */,
+				ED0097C8282376F4008B2D53 /* Utilities.swift in Sources */,
 				ED0097BC28221DB7008B2D53 /* UIColor+Ext.swift in Sources */,
 				EDE763292820C6EC00D88DE0 /* AccountsResponse.swift in Sources */,
-				EDE7632428203CB500D88DE0 /* CharacterSet+Ext.swift in Sources */,
 				ED0097BA2822186C008B2D53 /* AccountsViewController.swift in Sources */,
 				F9B4346E281E073A003EAAA6 /* AppDelegate.swift in Sources */,
 				F9B434A4281E4B12003EAAA6 /* TextFieldValidators.swift in Sources */,
@@ -730,6 +754,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		ED0097BD2822C6C9008B2D53 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.0.0;
+			};
+		};
 		EDE763252820818C00D88DE0 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -741,6 +773,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		ED0097BE2822C6C9008B2D53 /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED0097BD2822C6C9008B2D53 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
+		};
 		EDE763262820818C00D88DE0 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EDE763252820818C00D88DE0 /* XCRemoteSwiftPackageReference "Alamofire" */;

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class LoginViewController: UIViewController {
     
@@ -62,15 +63,15 @@ class LoginViewController: UIViewController {
             return
         }
 
-        accountInfoViewModel.getAccounts { [weak self] accounts in
-            self?.accountHolderInformation.accounts = accounts
-        }
-        accountInfoViewModel.getTotalPlanValue { [weak self] total in
+        accountInfoViewModel.getProducts { [weak self] products, total, success in
             guard let self = self else { return }
-            self.accountHolderInformation.totalPlanValue = total
-            self.accountInfoViewModel.getProducts { products in
-                let accountsController = AccountsViewController(accountHolderInfo: self.accountHolderInformation, products: products)
+            if success {
+                self.accountHolderInformation.accountProducts = products
+                self.accountHolderInformation.totalPlanValue = total
+                let accountsController = AccountsViewController(accountHolderInfo: self.accountHolderInformation)
                 self.navigationController?.pushViewController(accountsController, animated: true)
+            } else {
+                self.showLoginError()
             }
         }
     }

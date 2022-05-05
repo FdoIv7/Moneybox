@@ -11,12 +11,12 @@ struct ProductResponses: Codable {
     var id: Int
     var planValue: Double
     var moneyBox: Int
-    var products: Product
+    var product: Product
 
     private enum CodingKeys: String, CodingKey {
         case id = "Id"
         case planValue = "PlanValue"
         case moneyBox = "Moneybox"
-        case products = "Product"
+        case product = "Product"
     }
 }

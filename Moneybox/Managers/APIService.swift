@@ -28,7 +28,6 @@ final class APIService {
             "Email": email,
             "Password": password,
         ]
-
         AF.request(fullPath, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { [weak self] result in
             guard let data = result.data, let httpResponse = result.response else { return }
             self?.accountRequestSuccessful = (200..<300).contains(httpResponse.statusCode)
@@ -60,32 +59,29 @@ final class APIService {
         }
     }
 
-    public func getTotalPlanValue(completion: @escaping (_ total: Double) -> ()) {
+    public func getInvestorsProducts(completion: @escaping (_ products: [ProductResponses], _ total: Double, _ success: Bool) -> ()) {
         let investorsPath = "/investorproducts"
         let fullPath = baseURL + investorsPath
         AF.request(fullPath, method: .get, parameters: nil, encoding: JSONEncoding.default,
-                  headers: headers).responseJSON { response in
-            guard let results = response.value as? NSDictionary, let totalValue = results.value(forKey: "TotalPlanValue")
-            else { return }
-            guard let totalPlanValue = totalValue as? Double else { return }
-            completion(totalPlanValue)
-        }
-    }
-
-    public func getInvestorsProducts(completion: @escaping (_ products: [ProductResponses]) -> ()) {
-        let investorsPath = "/investorproducts"
-        let fullPath = baseURL + investorsPath
-        AF.request(fullPath, method: .get, parameters: nil, encoding: JSONEncoding.default,
-                  headers: headers).responseJSON { response in
-            guard let results = response.value as? NSDictionary, let products = results.value(forKey: "ProductResponses")
-            else { return }
+                  headers: headers).responseJSON { [weak self] results in
+            print("Result products = \(results)")
+            print("Result status = \(results.response?.statusCode)")
+            guard let httpResponse = results.response, let self = self else { return }
+            self.accountRequestSuccessful = (200..<300).contains(httpResponse.statusCode)
+            guard let results = results.value as? NSDictionary,
+                 let products = results.value(forKey: "ProductResponses"),
+                 let total = results.value(forKey: "TotalPlanValue") as? Double else { return }
             do {
                 let jsonProducts = try JSONSerialization.data(withJSONObject: products, options: .prettyPrinted)
                 let productArray = try JSONDecoder().decode([ProductResponses].self, from: jsonProducts)
-                completion(productArray)
+                completion(productArray, total, self.accountRequestSuccessful)
             } catch {
                 print(error)
             }
         }
+    }
+
+    public func addBalance() {
+        
     }
 }

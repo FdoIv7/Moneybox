@@ -16,6 +16,5 @@ struct Account: Codable {
         case type = "Type"
         case name = "Name"
         case hasCollections = "HasCollections"
-        //case totalValue = "TotalValue"
     }
 }

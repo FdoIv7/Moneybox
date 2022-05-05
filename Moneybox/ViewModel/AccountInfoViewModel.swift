@@ -14,15 +14,14 @@ final class AccountInfoViewModel {
         }
     }
 
-    public func getTotalPlanValue(completion: @escaping (_ total: Double) -> ()) {
-        APIService.shared.getTotalPlanValue { total in
-            completion(total)
+
+    public func getProducts(completion: @escaping (_ products: [ProductResponses], _ total: Double, _ success: Bool) -> ()) {
+        APIService.shared.getInvestorsProducts { products, total, success in
+            completion(products, total, success)
         }
     }
 
-    public func getProducts(completion: @escaping (_ products: [ProductResponses]) -> ()) {
-        APIService.shared.getInvestorsProducts { products in
-            completion(products)
-        }
+    public func checkForError() -> Bool {
+        return APIService.shared.accountRequestSuccessful
     }
 }
