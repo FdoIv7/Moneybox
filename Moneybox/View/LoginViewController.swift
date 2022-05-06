@@ -45,30 +45,32 @@ class LoginViewController: UIViewController {
     }
     
     private func getAccountInformation() {
-        showProgressHud()
         guard let email = emailTextField.text, let password = passwordTextField.text,
               loginViewModel.validateCredentialsFormat(email, password) else {
             showLoginWarning()
-            dismissProgressHud()
             return
         }
-        loginViewModel.login(email, password) { [weak self] accountHolderName in
+        loginViewModel.login(email, password) { [weak self] accountHolderName, success in
             guard let self = self else { return }
-            self.accountHolderInformation.name = accountHolderName ?? Constants.GeneralStrings.moneyboxTeam
-            self.dismissProgressHud()
-            if !APIService.shared.accountRequestSuccessful {
-                self.showLoginError()
-                return
-            }
-            self.accountInfoViewModel.getProducts { products, total, success in
-                if success {
-                    self.accountHolderInformation.accountProducts = products
-                    self.accountHolderInformation.totalPlanValue = total
-                    let accountsController = AccountsViewController(accountHolderInfo: self.accountHolderInformation)
-                    self.navigationController?.pushViewController(accountsController, animated: true)
-                } else {
+            if success {
+                self.showProgressHud()
+                self.accountHolderInformation.name = accountHolderName ?? Constants.GeneralStrings.moneyboxTeam
+                if !APIService.shared.accountRequestSuccessful {
                     self.showLoginError()
+                    return
                 }
+                self.accountInfoViewModel.getProducts { products, total, success in
+                    if success {
+                        self.accountHolderInformation.accountProducts = products
+                        self.accountHolderInformation.totalPlanValue = total
+                        let accountsController = AccountsViewController(accountHolderInfo: self.accountHolderInformation)
+                        self.navigationController?.pushViewController(accountsController, animated: true)
+                    } else {
+                        self.showLoginError()
+                    }
+                }
+            } else {
+                self.showLoginWarning()
             }
             self.dismissProgressHud()
         }
@@ -99,7 +101,7 @@ class LoginViewController: UIViewController {
     }
 
     private func showLoginWarning() {
-        let alert = UIAlertController(title: Constants.AlertMessages.credentials, message: Constants.AlertMessages.correctInfo,
+        let alert = UIAlertController(title: Constants.AlertMessages.loginError, message: Constants.AlertMessages.correctInfo,
                                       preferredStyle: .alert)
         let dismissAction = UIAlertAction(title: Constants.AlertMessages.ok, style: .default) { [weak self] action in
             self?.dismissProgressHud()
@@ -115,7 +117,7 @@ extension LoginViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
+
     @objc func dismissKeyboard () {
         view.endEditing(true)
     }

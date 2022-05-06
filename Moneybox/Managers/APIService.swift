@@ -20,7 +20,7 @@ final class APIService {
         "apiVersion": "3.0.0"
     ]
 
-    public func login(_ email: String, _ password: String, completion: @escaping (_ accountHolderName: String?) -> ()) {
+    public func login(_ email: String, _ password: String, completion: @escaping (_ accountHolderName: String?, _ success: Bool) -> ()) {
         let usersLoginPath = "users/login"
         let fullPath = baseURL + usersLoginPath
 
@@ -35,7 +35,10 @@ final class APIService {
             do {
                 let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary
                 // Session Response
-                guard let session = jsonResponse?.value(forKey: "Session") as? NSDictionary else { return }
+                guard let session = jsonResponse?.value(forKey: "Session") as? NSDictionary else {
+                    completion("", false)
+                    return
+                }
                 guard let bearerToken = session.value(forKey: "BearerToken") as? String else { return }
 
                 // User response
@@ -43,10 +46,10 @@ final class APIService {
                      let name = user.value(forKey: "FirstName") as? String else { return }
                 self?.token = bearerToken
                 self?.headers["Authorization"] = "Bearer \(self?.token ?? "")"
-                completion(name)
+                completion(name, true)
             } catch {
                 print("Error parsing response = \(error)")
-                completion("MoneyboxTeam")
+                completion("MoneyboxTeam", false)
             }
         }
     }

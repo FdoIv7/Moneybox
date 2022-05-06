@@ -32,8 +32,7 @@ struct Constants {
         static let error = "Error"
         static let ok = "Ok"
         static let dismiss = "Dismiss"
-        static let credentials = "Enter your credentials"
-        static let correctInfo = "Please enter all the correct information"
+        static let correctInfo = "Please enter the correct information"
         static let moneyboxError = "There was an error adding balance to your Moneybox"
     }
 
