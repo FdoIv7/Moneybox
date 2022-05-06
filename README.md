@@ -12,6 +12,7 @@ A mini Moneybox app. This app allows the user to login and view his/her accounts
 - Clone the repository by using `git clone https://github.com/FdoIv7/Moneybox.git`
 - Open the Moneybox Project in XCode
 - Wait for the dependencies to be installed
+- Run the app
 
 # Dependencies
 
